@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 namespace Slot
@@ -23,8 +24,6 @@ namespace Slot
     }
     public class Roll : MonoBehaviour
     {
-
-
         private RollIconState CurrentSymbol = RollIconState.J;
         private RollIconState LastSymbol = RollIconState.K;
         private RollState rollState = RollState.Stopped;
@@ -56,21 +55,37 @@ namespace Slot
         }
         private void Update()
         {
-            if (isChecking)
-            {
-                StopRolling(stopIcon);
-                ReelStopped?.Invoke();
-            }
+            if (!isChecking) return;
+            StopRolling(stopIcon);
+            ReelStopped?.Invoke();
         }
         private void FixedUpdate()
         {
             if (rollState != RollState.Spnning) return;
+            ResetPosition();
+            Spin();
+        }
 
+        void ResetPosition()
+        {
+            for (int i = 0; i < RollSegments.Length; i++)
+            {
+                int r = (i < RollSegments.Length - 1) ? (i + 1) : 0;
+                if (RollSegments[i].position.y < -7.5)
+                {
+                    var afterRoll = RollSegments[r].position;
+                    RollSegments[i].position = new Vector3(afterRoll.x, afterRoll.y + 22.5f, afterRoll.z);
+                }
+            }
+        }
+        void Spin()
+        {
             foreach (Transform roll in RollSegments)
             {
                 var pos = roll.position;
-                roll.position = new Vector3(pos.x, pos.y - rollSpeed * Time.deltaTime, pos.z);
-                totoalRollSpined += Time.fixedDeltaTime * rollSpeed;
+                var displacement = rollSpeed * Time.fixedDeltaTime;
+                roll.position = new Vector3(pos.x, pos.y - displacement, pos.z);
+                totoalRollSpined += displacement;
                 if (totoalRollSpined >= 7.5)
                 {
                     spinningError = totoalRollSpined - 7.5f;
@@ -78,18 +93,6 @@ namespace Slot
                     CheckCurrentSymbol();
                 }
             }
-
-                for (int i = 0; i < RollSegments.Length; i++)
-                {
-                    int r = (i < RollSegments.Length - 1) ? (i + 1) : 0;
-                    if (RollSegments[i].position.y < -7.5)
-                    {
-                        var afterRoll = RollSegments[r].position;
-                        RollSegments[i].position = new Vector3(afterRoll.x, afterRoll.y + 22.5f, afterRoll.z);
-
-                    }
-                }
-            
         }
 
         private void StopRolling(RollIconState currentSymbol)

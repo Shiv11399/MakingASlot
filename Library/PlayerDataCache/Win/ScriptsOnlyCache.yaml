@@ -51,31 +51,31 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11168}
+      Script: {instanceID: 11194}
     - Class: 114
-      Script: {instanceID: 11512}
+      Script: {instanceID: 11538}
     - Class: 114
-      Script: {instanceID: 12174}
+      Script: {instanceID: 12200}
     - Class: 114
-      Script: {instanceID: 12226}
+      Script: {instanceID: 12252}
     - Class: 114
-      Script: {instanceID: 12876}
+      Script: {instanceID: 12902}
     - Class: 114
-      Script: {instanceID: 13018}
+      Script: {instanceID: 13044}
     - Class: 114
-      Script: {instanceID: 13220}
+      Script: {instanceID: 13070}
     - Class: 114
-      Script: {instanceID: 13238}
+      Script: {instanceID: 13248}
     - Class: 114
-      Script: {instanceID: 13636}
+      Script: {instanceID: 13266}
     - Class: 114
-      Script: {instanceID: 13910}
+      Script: {instanceID: 13664}
     - Class: 114
-      Script: {instanceID: 14120}
+      Script: {instanceID: 13938}
     - Class: 114
-      Script: {instanceID: 14248}
+      Script: {instanceID: 14148}
     - Class: 114
-      Script: {instanceID: 26642}
+      Script: {instanceID: 14276}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -387,6 +387,12 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: a2558a96428b61c2f42c88011a3ebbc1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Slot
+    className: Machine
+  - hash:
+      serializedVersion: 2
       Hash: 71b711096c6c32621c1d4c02310898b7
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.U2D.Animation
@@ -583,13 +589,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: a2558a96428b61c2f42c88011a3ebbc1
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Slot
-    className: Machine
   platform: 5
   scenePathNames:
   - Assets/Scenes/Main.unity
-  playerPath: D:/Projects/Shiv Unity/SlotExample/Slot.exe
+  playerPath: D:/Projects/Shiv Unity/SlotBuild/Slot.exe

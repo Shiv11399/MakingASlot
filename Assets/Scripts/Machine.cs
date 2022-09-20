@@ -20,11 +20,14 @@ namespace Slot
 
         private void OnEnable()
         {
-            Roll.ReelStopped += RellStopped;
+            Roll.ReelStopped += RollStopped;
 
         }
-
-        private void RellStopped()
+        private void Awake()
+        {
+            Application.targetFrameRate = 30;
+        }
+        private void RollStopped()
         {
             stopCount++;
             if(stopCount == 5)
@@ -64,11 +67,6 @@ namespace Slot
             }
             CurrentState = MachineState.Spinning;
             SpinAndStopButton.sprite = StopSprite;
-        }
-
-        private void CheckStateAndStop()
-        {
-           
         }
     }
 }
